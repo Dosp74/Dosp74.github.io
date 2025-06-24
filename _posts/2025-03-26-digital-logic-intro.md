@@ -3,6 +3,8 @@ title: "[디지털 논리] 디지털이 뭔데? - 컴퓨터가 아날로그를 �
 date: 2025-03-26 22:56:00 +0900
 categories: [디지털 논리]
 tags: [아날로그, 디지털]
+layout: single
+comments: true
 ---
 
 ## 들어가기에 앞서

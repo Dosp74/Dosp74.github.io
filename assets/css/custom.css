@@ -1,24 +1,20 @@
 .page {
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.page__inner, .page__content {
-  max-width: 100%;
-}
-
 .sidebar {
-  max-width: 260px;
+  max-width: 240px;
 }
 
-.page__meta, .page__share, .page__comments, .page__footer {
-  max-width: 1100px;
+.page__inner, .page__content, .page__meta, .page__share, .page__comments, .page__footer {
+  max-width: 960px;
   margin: 0 auto;
 }
 
 @media (min-width: 1200px) {
   .sidebar {
-    flex: 0 0 260px;
+    flex: 0 0 240px;
   }
 }

@@ -8,6 +8,7 @@
         {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
         <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
       </span>
+      <span class="page__meta-sep" aria-hidden="true"> • </span>
       {% if document.last_mod %}
         <span class="page__meta-updated">
           <i class="fas fa-edit" aria-hidden="true"></i>

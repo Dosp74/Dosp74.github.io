@@ -2182,4 +2182,8 @@ bg-BG:
 
 # Another locale
 # --------------
-#
+locale: "ko-KR"
+date_label: "작성일"
+read_time_label: "읽는 시간"
+categories_label: "카테고리"
+tags_label: "태그"

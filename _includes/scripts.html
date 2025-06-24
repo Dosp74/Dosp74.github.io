@@ -19,6 +19,11 @@
 {% endif %}
 
 {% include analytics.html %}
+
+{% if site.pageviews.provider == "goatcounter" %}
+  {% include pageviews/goatcounter.html %}
+{% endif %}
+
 {% include /comments-providers/scripts.html %}
 
 {% if site.after_footer_scripts %}

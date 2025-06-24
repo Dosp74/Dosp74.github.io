@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://dosp74.github.io/sitemap.xml

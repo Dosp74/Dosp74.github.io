@@ -1,7 +1,13 @@
-{% if site.tag_archive.type and page.tags[0] %}
-  {% include tag-list.html %}
+{% if page.tags %}
+  <span class="label">Tags:</span>
+  {% for tag in page.tags %}
+    <a href="{{ '/tags/' | append: tag | uri_escape | append: '/' | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+  {% endfor %}
 {% endif %}
 
-{% if site.category_archive.type and page.categories[0] %}
-  {% include category-list.html %}
+{% if page.categories %}
+  <span class="label">Categories:</span>
+  {% for category in page.categories %}
+    <a href="{{ '/categories/' | append: category | uri_escape | append: '/' | relative_url }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+  {% endfor %}
 {% endif %}

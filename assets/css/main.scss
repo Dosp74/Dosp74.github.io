@@ -12,3 +12,30 @@ search: false
   margin: 0 0.3rem;
   color: #888;
 }
+
+.tag-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag-badge {
+  display: inline-block;
+  background-color: #2d3748;
+  color: #fff;
+  padding: 0.35em 0.75em;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #4a5568;
+  }
+
+  .tag-count {
+    margin-left: 0.25rem;
+    color: #cbd5e0;
+  }
+}

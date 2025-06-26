@@ -320,3 +320,8 @@ defaults:
       comments: true
       share: true
       related: true
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/

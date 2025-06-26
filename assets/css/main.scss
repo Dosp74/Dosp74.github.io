@@ -8,6 +8,31 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+.categories__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .category-button {
+    background: #2f3640;
+    color: #00aaff;
+    padding: 0.4em 0.8em;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.95rem;
+
+    &:hover {
+      background: #3f4854;
+    }
+
+    .category-count {
+      margin-left: 0.3rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  }
+}
+
 .tags__list {
   display: flex;
   flex-wrap: wrap;

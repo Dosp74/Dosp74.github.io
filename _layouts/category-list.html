@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="page__content">
+  <h1><i class="fas fa-folder"></i> {{ page.category }} <small>({{ site.categories[page.category] | size }})</small></h1>
+
+  <ul class="post-list">
+    {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
+    {% for post in posts %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small class="post-date">{{ post.date | date: "%b %-d, %Y" }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,5 +1,5 @@
 ---
 title: "Categories"
 permalink: /categories/
-layout: categories
+layout: all-categories
 ---

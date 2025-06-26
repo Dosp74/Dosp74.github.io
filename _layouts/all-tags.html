@@ -5,10 +5,10 @@ layout: default
 <div class="page__content">
   <h1>Tags</h1>
 
-  <div class="tag-badges">
+  <div class="tags__list">
     {% assign sorted_tags = site.tags | sort %}
     {% for tag in sorted_tags %}
-      <a class="tag-badge" href="/tags/{{ tag[0] | uri_escape | downcase }}.html">
+      <a class="tag-button" href="/tags/{{ tag[0] | uri_escape }}/">
         {{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span>
       </a>
     {% endfor %}

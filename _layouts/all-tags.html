@@ -8,7 +8,7 @@ layout: default
   <div class="tag-badges">
     {% assign sorted_tags = site.tags | sort %}
     {% for tag in sorted_tags %}
-      <a class="tag-badge" href="/tags/{{ tag[0] | uri_escape | downcase }}/">
+      <a class="tag-badge" href="/tags/{{ tag[0] | uri_escape | downcase }}.html">
         {{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span>
       </a>
     {% endfor %}

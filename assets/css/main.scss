@@ -65,3 +65,22 @@ search: false
   margin: 0 auto;
   padding: 2rem 1rem;
 }
+
+.page__taxonomy {
+  margin-bottom: 0.5em;
+
+  .page__taxonomy-item {
+    display: inline-block;
+    background: #2f3640;
+    color: #00aaff;
+    padding: 0.25em 0.6em;
+    border-radius: 999px;
+    margin-right: 0.4em;
+    text-decoration: none;
+    font-size: 0.85rem;
+
+    &:hover {
+      background: #3f4854;
+    }
+  }
+}

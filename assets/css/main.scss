@@ -23,7 +23,7 @@ search: false
 
     &:hover {
       background: #3f4854;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     .tag-count {

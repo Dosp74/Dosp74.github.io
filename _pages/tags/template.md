@@ -1,4 +1,5 @@
 ---
 layout: tag-router
-permalink: /tags/:tag.html
+permalink: /tags/:tag/
+tag: dummy
 ---

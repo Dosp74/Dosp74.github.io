@@ -1,5 +1,5 @@
 ---
 title: "Tags"
 permalink: /tags/
-layout: tags
+layout: all-tags
 ---

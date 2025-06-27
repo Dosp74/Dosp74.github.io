@@ -1,10 +1,10 @@
 # main links
 main:
-  - title: "블로그"
+  - title: "HOME"
     url: /
-  - title: "카테고리"
+  - title: "CATEGORIES"
     url: /categories/
-  - title: "태그"
+  - title: "TAGS"
     url: /tags/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/

@@ -1,7 +1,7 @@
 ---
 title: "[알고리즘] 최소 신장 트리(Minimum Spanning Tree)"
 date: 2025-06-27 21:22:00 +0900
-last_mod: 2025-06-27
+last_mod: 2025-07-01
 categories: [알고리즘]
 tags: [그리디 알고리즘, 최소 신장 트리]
 ---
@@ -61,7 +61,7 @@ GreedyAlgorithm():
 신장(Spanning)은 "생성"이라는 뜻을 가지고 있다.<br>
 
 뜻이 모호하다.<br>
-대학교 알고리즘 강의에서 나온 용어의 정의를 가져와봤다.<br><br>
+모 대학 알고리즘 강의에서 소개된 용어의 정의를 가져와봤다.<br><br>
 
 Spanning Tree for undirected graph<br>
 -> a connected subgraph that contains all the vertices in G and is a tree<br>
@@ -108,7 +108,7 @@ Minimum Spanning Tree for undirected graph<br>
 
 최소 신장 트리를 구하는 방법으로 가장 널리 알려진 알고리즘은 두 개가 있다.<br>
 
-프림의 알고리즘과 크루스칼의 알고리즘이 있다. (여기서 프림과 크루스칼은 사람의 이름이다.)<br><br>
+프림의 알고리즘과 크루스칼의 알고리즘이다. (여기서 프림과 크루스칼은 사람의 이름이다.)<br><br>
 먼저 프림의 알고리즘에 대해 소개하겠다.<br><br>
 
 ### 프림의 알고리즘 아이디어 요약
@@ -235,7 +235,7 @@ nearest[i]는 V_1밖에 없는 상태에서 출발하므로 0으로 초기화하
 
 `요약`<br>
 
-1. 아무 정점을 시작점으로 선택(여기서는 V_1 선택)
+1. 아무 정점을 시작점으로 선택 (여기서는 V_1 선택)
 2. distance 배열에서 최솟값을 갖는 정점 선택
 3. 그 정점을 트리에 추가
 4. 연결되지 않은 정점들에 대해 nearest, distance 갱신
@@ -243,7 +243,7 @@ nearest[i]는 V_1밖에 없는 상태에서 출발하므로 0으로 초기화하
 
 <br>시간 복잡도는 2중 for 문을 사용하므로 대충 Θ(n^2)이며, 알고리즘에 트리에 포함되지 않은 정점들 중에서 distance[i] 값이 가장 작은 정점을 반복적으로 선택하고 넣는 행위가 있으므로 heap(priority queue)을 쓰면 시간 복잡도를 logn만큼 더 줄일 수 있을 것이다.<br>
 
-> 좋은 자료구조 선택 시 알고리즘의 시간 복잡도를 logn만큼 더 줄일 수 있다.<br>
+> 보통, 좋은 자료구조 선택 시 알고리즘의 시간 복잡도를 logn만큼 더 줄일 수 있다.<br>
 
 <br>프림 알고리즘의 궁극적인 버전은 `피보나치 힙`이라는 자료구조를 쓰는 것인데, 관심 있는 사람은 이에 대해 더 찾아보기 바란다.<br>
 
@@ -261,7 +261,7 @@ nearest[i]는 V_1밖에 없는 상태에서 출발하므로 0으로 초기화하
 3. edge를 가중치 기준으로 오름차순 정렬
 4. 반복
     다음 edge 선택
-    선택된 edge가 서로 다른 집합(Disjoint set)에 속한 두 정점을 연결한다면, 두 집합을 합침(merge)
+    선택된 edge가 서로 다른 집합(Disjoint set)에 속한 두 정점을 연결한다면, 두 집합을 합침(Union)
     이후 해당 edge를 F에 추가
 5. 모든 정점이 하나의 집합으로 병합되면, 알고리즘 종료
 ```
@@ -270,13 +270,139 @@ nearest[i]는 V_1밖에 없는 상태에서 출발하므로 0으로 초기화하
 
 여기서 Disjoint set이 좀 생소할 것이다.<br>
 Disjoint set(서로소 집합)은 자료구조 중 하나로, 원소들이 서로 겹치지 않는 여러 개의 집합을 관리할 때 쓰는 자료구조이다.<br>
-주로 집합을 합치거나 어느 집합에 속해 있는지 확인할 때 사용한다.
+주로 집합을 합치거나 어느 집합에 속해 있는지 확인할 때 사용한다.<br><br>
 
-Disjoint set은 C++ STL에 없기 때문에 직접 구현하여 사용해야 하며, 따라서 크루스칼의 알고리즘은 간단한 흐름만 소개하고 넘어가도록 하겠다.<br><br>
+Disjoint set은 C++ STL에 없기 때문에 직접 구현해서 사용해야 한다.
 
-참고로 크루스칼의 알고리즘의 시간 복잡도는 edge의 개수에 따라 크게 달라지는데, edge가 적을 때는 Θ(nlogn)부터, edge가 많을 때는 Θ(n^2logn)까지 늘어난다.<br><br>
+## 크루스칼 알고리즘 구현
 
-edge가 적으면 크루스칼, edge가 많으면 프림의 알고리즘이 더 좋지만, 사실 프림의 알고리즘에서 피보나치 힙 자료구조를 사용하면 항상 Θ(nlogn)을 유지하므로 프림의 알고리즘이 더 좋긴 하다.
+다시, 크루스칼 알고리즘은 edge를 가중치 기준으로 정렬한 뒤 하나씩 선택하면서 Cycle이 생기는지 판단하고 생기지 않으면 선택한다. 즉, vertex 간 연결 정보를 인접 행렬(Adjacency matrix)로 다루는 것보다, edge list로 직접 다루는 것이 시간과 구현 면에서 효율적이다.<br>
+
+다만 일반적인 알고리즘 문제 풀이에서 인접 행렬로 주어진 그래프를 입력으로 받는 경우가 대부분이므로 그래프를 edge list로 바꾸어서 문제를 해결하는 알고리즘을 소개하고자 한다.
+
+[C++]
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
+using namespace std;
+
+const int V = 5;
+
+// 간선 구조체
+struct Edge {
+    int u, v;     // u는 출발 정점, v는 도착 정점
+    int weight;
+};
+
+// 가중치 기준 정렬(sort) 시 오름차순으로 정렬하기 위한 비교 함수
+bool compare(const Edge& a, const Edge& b) {
+    return a.weight < b.weight;
+}
+
+// Disjoint Set
+class DisjointSet {
+private:
+    vector<int> parent, rank;     // parent는 각 원소의 부모, 루트면 자기 자신
+                                  // rank는 트리의 깊이 추적 용도(Union 시 작은 트리를 큰 트리에 붙이기 위함)
+public:
+    DisjointSet(int n) {     // vertex 개수 n만큼 배열을 초기화하는 생성자
+        parent.resize(n);
+        rank.resize(n, 0);     // 모든 트리의 초기 depth는 0
+        for (int i = 0; i < n; i++)     // 각 vertex를 자신만 포함하는 독립된 집합으로 초기화
+            parent[i] = i;
+    }
+
+    int find(int x) {     // vertex x가 속한 집합의 루트를 찾는 재귀함수
+        if (parent[x] != x)
+            parent[x] = find(parent[x]); // 경로 압축(구조 기반 캐싱)
+
+        return parent[x];
+    }
+
+    void unite(int x, int y) {     // 두 집합을 병합하는 함수
+        int rootX = find(x);
+        int rootY = find(y);
+
+        if (rootX == rootY)     // 같은 집합에 속해 있다면
+            return;
+
+        if (rank[rootX] < rank[rootY])     // 작은 트리를 큰 트리 밑으로 붙여 트리의 높이를 최소화
+            parent[rootX] = rootY;
+        else {
+            parent[rootY] = rootX;
+
+            if (rank[rootX] == rank[rootY])
+                rank[rootX]++;
+        }
+    }
+};
+
+// 크루스칼 알고리즘
+void kruskal(const vector<Edge>& edges) {
+    DisjointSet ds(V);
+    vector<Edge> MST;
+    int totalWeight = 0;
+
+    vector<Edge> sortedEdges = edges;
+    sort(sortedEdges.begin(), sortedEdges.end(), compare);
+
+    for (const Edge& e : sortedEdges) {
+        if (ds.find(e.u) != ds.find(e.v)) {
+            MST.push_back(e);
+            totalWeight += e.weight;
+
+            ds.unite(e.u, e.v);
+
+            if (MST.size() == V - 1)
+                break;
+        }
+    }
+
+    cout << "선택된 간선들(u - v : weight):\n";
+
+    for (const Edge& e : MST)
+        cout << "V" << e.u + 1 << " - V" << e.v + 1 << " : " << e.weight << "\n";
+
+    cout << "총 가중치 : " << totalWeight << "\n";
+}
+
+int main() {
+    // 인접 행렬 (INT_MAX는 edge가 없음을 의미)
+    int W[V][V] = {
+        {0, 1, 3, INT_MAX, INT_MAX},
+        {1, 0, INT_MAX, 6, INT_MAX},
+        {3, INT_MAX, 0, 4, 2},
+        {INT_MAX, 6, 4, 0, 5},
+        {INT_MAX, INT_MAX, 2, 5, 0}
+    };
+
+    // 인접 행렬 -> 간선 리스트로 변환
+    vector<Edge> edges;
+    for (int i = 0; i < V; i++) {
+        for (int j = i + 1; j < V; j++) {
+            if (W[i][j] != INT_MAX) {
+                edges.push_back({i, j, W[i][j]});
+            }
+        }
+    }
+
+    kruskal(edges);
+
+    return 0;
+}
+```
+
+참고로 크루스칼 알고리즘의 시간 복잡도는 edge의 개수에 따라 크게 달라지는데, 그 이유는 edge를 가중치 기준으로 정렬하는 데 걸리는 시간에 있다.<br>
+
+엄밀히는, edge 정렬 시간과 find / union 연산 시간, 2단계에 걸친 시간이 소요되는데 각 edge마다 find()와 union()을 수행하는 데 걸리는 시간은 상수 시간에 가깝다.<br>
+즉 edge가 적을 때는 Θ(nlogn)부터, edge가 많을 때는 Θ(n^2logn)까지 늘어난다.<br>
+
+> n X n 그래프에서 모든 edge가 있는 완전 그래프인 경우 n^2개의 edge를 정렬해야 하기 때문이다. 참고로 비교 기반 정렬 알고리즘의 lower bound는 Θ(nlogn)이다.
+
+<br><br>edge가 적으면 크루스칼, edge가 많으면 프림의 알고리즘이 더 좋지만, 사실 프림의 알고리즘에서 피보나치 힙 자료구조를 사용하면 항상 Θ(nlogn)을 유지하므로 프림의 알고리즘이 더 좋긴 하다.
 
 ---
 

@@ -317,7 +317,7 @@ public:
 
     int find(int x) {     // vertex x가 속한 집합의 루트를 찾는 재귀함수
         if (parent[x] != x)
-            parent[x] = find(parent[x]); // 경로 압축(구조 기반 캐싱)
+            parent[x] = find(parent[x]);     // 경로 압축(구조 기반 캐싱)
 
         return parent[x];
     }
@@ -398,7 +398,9 @@ int main() {
 참고로 크루스칼 알고리즘의 시간 복잡도는 edge의 개수에 따라 크게 달라지는데, 그 이유는 edge를 가중치 기준으로 정렬하는 데 걸리는 시간에 있다.<br>
 
 엄밀히는, edge 정렬 시간과 find / union 연산 시간, 2단계에 걸친 시간이 소요되는데 각 edge마다 find()와 union()을 수행하는 데 걸리는 시간은 상수 시간에 가깝다.<br>
-즉 edge가 적을 때는 Θ(nlogn)부터, edge가 많을 때는 Θ(n^2logn)까지 늘어난다.<br>
+따라서 크루스칼 알고리즘의 basic operation은 edge 정렬 시간이다.<br>
+
+이에 따라 알고리즘의 시간 복잡도가 edge가 적을 때는 Θ(nlogn)부터, edge가 많을 때는 Θ(n^2logn)까지 늘어난다.<br>
 
 > n X n 그래프에서 모든 edge가 있는 완전 그래프인 경우 n^2개의 edge를 정렬해야 하기 때문이다. 참고로 비교 기반 정렬 알고리즘의 lower bound는 Θ(nlogn)이다.
 

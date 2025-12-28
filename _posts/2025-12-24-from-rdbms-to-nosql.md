@@ -81,7 +81,7 @@ Partition Key로 chat_room_id를, Sort Key로 created_at을 두어 채팅방별 
 
 **ChatRoomMembers**
 
-기본 Partition Key로 chat_room_id를, Sort Key로 user_id를 두었고, GSI(user-index)로 Partition Key: user_id, Sort Key: chat-room_id를 두어 **사용자가 참여 중인 채팅방 목록 조회** 를 지원하도록 한다.
+기본 Partition Key로 chat_room_id를, Sort Key로 user_id를 두었고, GSI(user-index)로 Partition Key: user_id, Sort Key: chat_room_id를 두어 **사용자가 참여 중인 채팅방 목록 조회** 를 지원하도록 한다.
 
 여기서 GSI는 Global Secondary Index로, 테이블의 기본 키와는 다른 Partition Key/Sort Key 조합으로 데이터를 조회할 수 있도록 만든 보조 인덱스이다. 이를 통해 여러 조회 패턴을 하나의 테이블에서 지원할 수 있다.
 내부적으로는 별도의 테이블처럼 데이터가 복제되어 저장되며, Global이라는 단어가 붙은 이유는 어떤 파티션에 있든 전역적으로 조회가 가능하기 때문이다.

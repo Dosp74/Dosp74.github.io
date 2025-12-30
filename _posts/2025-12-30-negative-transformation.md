@@ -31,11 +31,11 @@ Negative Transformation은 영상의 밝기 값을 반전시키는 변환이다.
 
 즉, 밝은 영역은 어두워지고, 어두운 영역은 밝아지면서 영상의 **흑백이 완전히 반전** 된다.
 
-이는 어두운 배경에 묻힌 밝은 구조를 강조할 때 유용하며, 공식이 단순하기 때문에 구현 역시 매우 직관적이다.
+이는 어두운 배경에 묻힌 밝은 구조를 강조할 때 유용하며, 공식이 단순하기 때문에 구현 또한 직관적이다.
 
 ---
 
-다음은 Lena.png 파일에 Negative Transformation(s = N - 1 - r)을 적용한 결과이다.
+다음은 Lena.png 파일에 Negative Transformation(s = L - 1 - r)을 적용한 결과이다.
 
 ![Image](/assets/images/2025-12-30/2025-12-30-negative-transformation.png)
 
@@ -58,7 +58,7 @@ Mat negativeTransform(const Mat& src) {
         for (int x = 0; x < src.cols; x++) {
             uchar r = src.at<uchar>(y, x);
 
-            // Negative Transformation s = N - 1 - r에서 흑백 반전을 최대로 적용하려면 8비트 최댓값인 256(N)을 사용
+            // Negative Transformation s = L - 1 - r에서 흑백 반전을 최대로 적용하려면 8비트 최댓값인 256(L)을 사용
             result.at<uchar>(y, x) = 255 - r;
         }
     }

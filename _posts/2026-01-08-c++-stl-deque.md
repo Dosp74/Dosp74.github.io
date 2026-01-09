@@ -93,7 +93,7 @@ back: 2
 [https://www.acmicpc.net/problem/2346](https://www.acmicpc.net/problem/2346)
 
 이 문제는 양쪽 회전이 가능한 자료구조가 필요하다.
-앞가 뒤에서 모두 원소를 꺼내고 다시 넣어야 하므로, deque이 가장 적합하다.
+앞과 뒤에서 모두 원소를 꺼내고 다시 넣어야 하므로, deque이 가장 적합하다.
 
 ```cpp
 #include <iostream>
